@@ -7,6 +7,7 @@ export default function handler(req, res) {
     response_type: 'code',
     redirect_uri: process.env.redirect_uri,
     client_id: process.env.client_id,
+    prompt: 'consent select_account',
   };
 
   const url = `${process.env.GOOGLE_OAUTH_REDIRECT_URL}?${new URLSearchParams(
