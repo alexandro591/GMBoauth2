@@ -26,7 +26,9 @@ export default function async(req, res) {
     url = process.env.MY_BUSINESS_AM_API_URL;
     const headers = { Authorization: `Bearer ${access_token}` };
 
-    const { data: accounts } = await axios.get(url, { headers });
+    const {
+      data: { accounts },
+    } = await axios.get(url, { headers });
     await axios.post(`${process.env.DATABASE_URL}/accounts.json`, {
       accounts,
       access_token,
