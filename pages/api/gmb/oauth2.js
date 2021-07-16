@@ -2,16 +2,16 @@ import environment from '../../../environment';
 
 export default function handler(req, res) {
   const query_params = {
-    scope: environment.scope,
+    scope: process.env.scope,
     access_type: 'offline',
     include_granted_scopes: 'true',
     state: 'state_parameter_passthrough_value',
     response_type: 'code',
-    redirect_uri: environment.redirect_uri,
-    client_id: environment.client_id,
+    redirect_uri: process.env.redirect_uri,
+    client_id: process.env.client_id,
   };
 
-  const url = `${environment.GOOGLE_OAUTH_REDIRECT_URL}?${new URLSearchParams(
+  const url = `${process.env.GOOGLE_OAUTH_REDIRECT_URL}?${new URLSearchParams(
     query_params
   )}`;
 

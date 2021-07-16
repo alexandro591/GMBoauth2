@@ -13,21 +13,21 @@ export default function async(req, res) {
   const code = req.query.code;
   const body = {
     code: code,
-    client_id: environment.client_id,
-    client_secret: environment.client_secret,
-    redirect_uri: environment.redirect_uri,
+    client_id: process.env.client_id,
+    client_secret: process.env.client_secret,
+    redirect_uri: process.env.redirect_uri,
     grant_type: 'authorization_code',
   };
-  let url = environment.GOOGLE_OAUTH_API_URL;
+  let url = process.env.GOOGLE_OAUTH_API_URL;
   axios.post(url, body).then(async ({ data }) => {
     const access_token = data.access_token;
     const refresh_token = data.refresh_token;
 
-    url = environment.MY_BUSINESS_AM_API_URL;
+    url = process.env.MY_BUSINESS_AM_API_URL;
     const headers = { Authorization: `Bearer ${access_token}` };
 
     const { data: accounts } = await axios.get(url, { headers });
-    await axios.post(`${environment.DATABASE_URL}/accounts.json`, {
+    await axios.post(`${process.env.DATABASE_URL}/accounts.json`, {
       accounts,
       access_token,
       refresh_token,
