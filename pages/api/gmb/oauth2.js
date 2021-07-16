@@ -1,5 +1,3 @@
-import environment from '../../../environment';
-
 export default function handler(req, res) {
   const query_params = {
     scope: process.env.scope,

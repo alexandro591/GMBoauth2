@@ -1,4 +1,3 @@
-import environment from '../../../environment';
 import fs from 'fs';
 import path from 'path';
 import axios from 'axios';
