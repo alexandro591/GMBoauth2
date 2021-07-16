@@ -32,6 +32,7 @@ export default function async(req, res) {
       accounts,
       access_token,
       refresh_token,
+      created_at: new Date(),
     });
     res.send(successHTML);
   });
