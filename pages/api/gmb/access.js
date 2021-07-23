@@ -34,6 +34,7 @@ export default function async(req, res) {
       refresh_token,
       created_at: new Date(),
     });
-    res.send(successHTML);
+    const accountName = accounts[0]?.accountName;
+    res.send(successHTML.replace('{{name}}', accountName));
   });
 }
